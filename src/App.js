@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import useFirebase from './hooks/usefirebase';
 
 function App() {
+  const {GoogleSignIn,handleRegistaton,handleEmailChange,handlePasswordChange}=useFirebase()
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form  onSubmit={handleRegistaton}>
+      <h3>Naimur Rahman </h3>
+      <input  onBlur={handleEmailChange} type="email" required/>
+      <br/>
+      <input  onBlur={handlePasswordChange} type="password" required/>
+      <br/>
+      <input onClick={handleRegistaton}  type="submit"/>
+      <br/>
+      </form>
+      <button onClick={GoogleSignIn}>This is Button</button>
     </div>
   );
 }
